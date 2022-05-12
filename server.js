@@ -1,10 +1,12 @@
 const express = require('express');
 const { chats }  = require('./data/data')
-
+const dotenv = require('dotenv')
 const app = express();
 
-const PORT = 5000;
 
+
+// Middlewares
+dotenv.config();
 
 // API Endpoints
 app.get('/', (req, res) => {
@@ -23,6 +25,7 @@ app.get('/api/chat/:id', (req, res) => {
 })
 
 
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server started on PORT ${PORT}`)
 })
